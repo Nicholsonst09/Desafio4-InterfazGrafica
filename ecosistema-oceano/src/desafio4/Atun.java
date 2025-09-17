@@ -88,6 +88,18 @@ class Atun extends Animal implements HabitatOceano{
         consumirEnergia(5);
     }
     
+      public void huir() {
+        if (!vivo || energia < 10) {
+            System.out.println("El atún " + nombre + " no puede huir.");
+            return;
+        }
+        if (enCardumen) {
+            System.out.println("El atún " + nombre + " usa la confusión del cardumen para escapar!");
+        } else {
+            System.out.println("El atún " + nombre + " huye a máxima velocidad!");
+        }
+        consumirEnergia(10);
+    }
 
 
     public boolean isEnCardumen() {
