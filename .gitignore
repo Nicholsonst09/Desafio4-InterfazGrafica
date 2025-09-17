@@ -1,1 +1,12 @@
-/ecosistema-oceano/nbproject/private/
+*.class
+
+*.log
+
+*.jar
+*.war
+*.zip
+
+/nbproject/private/
+/build/
+/dist/
+/nbdist/
