@@ -87,6 +87,24 @@ class Pulpo extends Animal implements HabitatOceano{
         consumirEnergia(8);
     }
     
-    
+    public void atacarConTentaculos(Animal presa) {
+        if (!vivo || energia < 20) {
+            System.out.println("El pulpo " + nombre + " no tiene energía para atacar.");
+            return;
+        }
+        if (camuflado) {
+            System.out.println("El pulpo " + nombre + " ataca por sorpresa desde su camuflaje a " + presa.getNombre() + "!");
+            presa.consumirEnergia(30);
+            camuflado = false; 
+        } else {
+            System.out.println("El pulpo " + nombre + " extiende sus tentáculos para atrapar a " + presa.getNombre() + "!");
+            presa.consumirEnergia(20);
+        }
+        consumirEnergia(20);
+    }
+
+    public boolean isCamuflado() {
+        return camuflado;
+    }
     
 }
