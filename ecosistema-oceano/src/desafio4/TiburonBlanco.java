@@ -37,8 +37,8 @@ class TiburonBlanco extends Animal implements HabitatOceano {
         System.out.println("El tiburón " + nombre + " se mueve con velocidad buscando su presa.");
         consumirEnergia(12);
     }
-    
-        @Override
+
+    @Override
     public void alimentarse() {
         if (!vivo || energia < 20) {
             System.out.println("El tiburón " + nombre + " no puede alimentarse.");
@@ -48,7 +48,7 @@ class TiburonBlanco extends Animal implements HabitatOceano {
         energia = Math.min(100, energia + 35);
         consumirEnergia(20);
     }
-    
+
     @Override
     public void nadar() {
         if (!vivo || energia < 10) {
@@ -58,7 +58,51 @@ class TiburonBlanco extends Animal implements HabitatOceano {
         System.out.println("El tiburón " + nombre + " nada con movimientos perfectos.");
         consumirEnergia(10);
     }
-    
-    
+
+    @Override
+    public void bucear(int profundidad) {
+        if (!vivo || energia < 15) {
+            System.out.println("El tiburón " + nombre + " no puede bucear.");
+            return;
+        }
+        System.out.println("El tiburón " + nombre + " bucea hasta " + profundidad + " metros.");
+        consumirEnergia(15);
+    }
+
+    @Override
+    public void navegarCorrientes() {
+        if (!vivo || energia < 8) {
+            System.out.println("El tiburón " + nombre + " no puede navegar corrientes.");
+            return;
+        }
+        System.out.println("El tiburón " + nombre + " aprovecha las corrientes para cazar.");
+        consumirEnergia(8);
+    }
+
+    public void cazarAtun(Atun atun) {
+        if (!vivo || energia < 25) {
+            System.out.println("El tiburón " + nombre + " no tiene energía para cazar.");
+            return;
+        }
+        System.out.println("El tiburón" + nombre + " persigue a " + atun.getNombre() + ".");
+        if (atun.isVivo() && Math.random() > 0.3) { //Hay un 70% de posibilidades de éxito
+            atun.setEnergia(0);
+            System.out.println("El tiburón " + nombre + " ha capturado exitosamente a " + atun.getNombre() + "!");
+            energia = Math.min(100, energia + 35);
+        } else {
+            System.out.println("El " + atun.getNombre() + " logró escapar!");
+            atun.huir();
+        }
+        consumirEnergia(25);
+    }
+
+    public void huir() {
+        if (!vivo || energia < 15) {
+            System.out.println("El tiburón " + nombre + " no puede huir.");
+            return;
+        }
+        System.out.println("El tiburón " + nombre + " huye rápidamente a una velocidad máxima de " + velocidadMaxima + "km/h.");
+        consumirEnergia(15);
+    }
 
 }
