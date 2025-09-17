@@ -47,8 +47,8 @@ public class BallenaAzul extends Animal implements HabitatOceano {
         energia = Math.min(100, energia + 25);
         consumirEnergia(10);
     }
-    
-     @Override
+
+    @Override
     public void nadar() {
         if (!vivo || energia < 8) {
             System.out.println("La ballena " + nombre + " no puede nadar.");
@@ -57,7 +57,7 @@ public class BallenaAzul extends Animal implements HabitatOceano {
         System.out.println("La ballena " + nombre + " nada gracias a su cola.");
         consumirEnergia(8);
     }
-    
+
     @Override
     public void bucear(int profundidad) {
         if (!vivo || energia < 15) {
@@ -70,6 +70,25 @@ public class BallenaAzul extends Animal implements HabitatOceano {
         }
         System.out.println("La ballena " + nombre + " bucea hasta " + profundidad + " metros de profundidad.");
         consumirEnergia(12);
+    }
+
+    @Override
+    public void navegarCorrientes() {
+        if (!vivo || energia < 9) {
+            System.out.println("La ballena " + nombre + " no puede navegar corrientes.");
+            return;
+        }
+        System.out.println("La ballena " + nombre + " utiliza las corrientes para moverse grandes distancias.");
+        consumirEnergia(9);
+    }
+        public void atacarTiburon(TiburonBlanco tiburon){
+         if (!vivo || energia < 20) {
+            System.out.println("La ballena " + nombre + " no tiene energía para atacar al tiburón.");
+            return;
+        }
+        System.out.println("La ballena " + nombre + " usa su tamaño para atacar a intimidar al " + tiburon.getNombre());
+        tiburon.huir();
+        consumirEnergia(20);
     }
 
 }
