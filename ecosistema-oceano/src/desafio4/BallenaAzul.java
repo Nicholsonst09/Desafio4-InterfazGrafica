@@ -81,8 +81,9 @@ public class BallenaAzul extends Animal implements HabitatOceano {
         System.out.println("La ballena " + nombre + " utiliza las corrientes para moverse grandes distancias.");
         consumirEnergia(9);
     }
-        public void atacarTiburon(TiburonBlanco tiburon){
-         if (!vivo || energia < 20) {
+
+    public void atacarTiburon(TiburonBlanco tiburon) {
+        if (!vivo || energia < 20) {
             System.out.println("La ballena " + nombre + " no tiene energía para atacar al tiburón.");
             return;
         }
